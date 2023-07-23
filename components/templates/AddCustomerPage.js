@@ -59,7 +59,9 @@ export default function AddCustomerPage() {
 
     return (
         <div className='flex flex-col'>
+            
             <h4 className='text-white my-4'>Add New Customer</h4>
+
             <Form form={form} setForm={setForm} />
 
             <div className='flex justify-between items-center'>
