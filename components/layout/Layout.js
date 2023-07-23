@@ -13,11 +13,11 @@ export default function Layout({children}) {
             href='/add-customer'>Add-Customer</Link>
         </header>
 
-        <div className='min-h-10/12'>
+        <div className='min-h-10/12 w-10/12 mx-auto'>
             {children}
         </div>
 
-        <footer className=' w-10/12 bg-zinc-400 mx-auto rounded p-1 text-center' >
+        <footer className=' w-10/12 bg-zinc-200 mx-auto rounded p-1 text-center' >
           <p >CRM Project</p>
         </footer>
     </div>
