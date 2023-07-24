@@ -11,7 +11,6 @@ export default function ItemList({ form, setForm }) {
             ...form,
             products: [...products, { name: '', qty: '', price: '' }]
         })
-        console.log(products);
     }
 
     const changeHandler = (e, index) => {
@@ -23,6 +22,7 @@ export default function ItemList({ form, setForm }) {
 
     const deleteHandler = (index) => {
         const newProducts = [...products];
+        newProducts.splice(index, 1);
         setForm({ ...form, products: newProducts })
     }
 
@@ -39,7 +39,7 @@ export default function ItemList({ form, setForm }) {
                 products.map((item, index) => <ProductItem key={index}
                     product={item}
                     changeHandler={(e) => changeHandler(e, index)}
-                    deleteHandler={() => deleteHandler(index)}
+                    deleteHandler={(index) => deleteHandler(index)}
                 />)
             }
 
@@ -78,7 +78,7 @@ function ProductItem({ product, changeHandler, deleteHandler }) {
             </div>
 
             <button
-                onClick={() => deleteHandler(index)}
+                onClick={deleteHandler}
                 className='border text-red-500 p-1
                             border-red-500 rounded w-full '
             >Remove</button>
