@@ -12,20 +12,23 @@ export default async function handler(req, res){
     }
 
     if(req.method === "POST"){
-        const {data} = req.body 
-
-        if(!data.name || !data.lastName || !data.email) 
-        return res.status(400)
-        .json({status:'failed', message:"invalid data"})
+        const data= req.body.data
         
-        try{
+        if(!data.name || !data.lastName || !data.email){
+            res.status(400).json({status:'failed', message:"Invalid data!"})
+                return;
+            }
             
-            const customer = await Customer.create({data})
-            res.status(201).json({status:"success", message:"data created at DB", data:customer}) 
+            try{
+            const customer= await Customer.create(data)
+
+            res.status(201)
+            .json({status:"success",message:'the data has sent to DB' ,data:customer})
+
         }catch(err){
-            res.status(500).json({status:"failed", message:"couldn't send data to DB"})
+            res.status(500)
+        .json({status:"failed", message:"failed to send data to DB"})
         }
-        
     }
 
 }

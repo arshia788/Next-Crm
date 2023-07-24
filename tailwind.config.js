@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     minHeight:{
       '1/2':"50%",
-      "10/12":"85%"
+      "10/12":"79vh"
     },
     extend: {},
   },

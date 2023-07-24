@@ -1,16 +1,14 @@
 import React from 'react'
-import FormInput from './FormInput'
+import FormInput from './FromInput'
 import ItemList from './ItemList'
 
-export default function Form({form, setForm}) {
+function Form({form, setForm}) {
   return (
-    <div className='my-8'>
-
-        {/* <FormInput />   */}
-        <ItemList  form={form} setForm={setForm}/>
-               
+    <div>
+        {/* <FormInput /> */}
+        <ItemList form={form} setForm={setForm}/>
     </div>
   )
 }
 
- 
+export default Form

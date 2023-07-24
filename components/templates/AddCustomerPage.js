@@ -17,30 +17,28 @@ export default function AddCustomerPage() {
         date: '',
         products: [],
     })
-    const router = useRouter();
+
+    const router= useRouter();
 
     const saveHandler = async () => {
-        const res = await fetch('/api/customer', {
-            method: "POST",
-
-            // !havaset bashe ke form ro be name data dadi be back
-
-            body: JSON.stringify({ data: form }),
-            headers: { "Content-Type": "application/json" }
+        const res= await fetch ('/api/customer',{
+            method:"POST",
+            body:JSON.stringify({data:form}),
+            headers:{"Content-Type":"application/json"}
         })
-        const data = await res.json();
+        const data= await res.json();
+        console.log(data);
 
-        if (data.status === "success") {
-            toast.success("The user created", {
-                position:"top-right",
-                closeOnClick:true,
+        if(data.status === "success"){
+            toast.success("User created",{
+                position:'top-right',
                 theme:"colored"
             })
-            router.push('/');
+            router.push('/')
         }
     }
 
-    const cancelHandler = async () => {
+    const cancelHandler = () => {
         setForm({
             name: '',
             email: '',
@@ -50,30 +48,28 @@ export default function AddCustomerPage() {
             postalCode: '',
             date: '',
             products: [],
-        }),
-
+        })
         router.push('/')
     }
 
-
-
     return (
-        <div className='flex flex-col'>
-            
-            <h4 className='text-white my-4'>Add New Customer</h4>
+        <div className=''>
+            <h2 className='text-white mt-6 mb-4 font-semibold text-lg'>Add-Customer-Page</h2>
 
             <Form form={form} setForm={setForm} />
 
-            <div className='flex justify-between items-center'>
+            <div className='flex justify-between items-center mt-3'>
                 <button
-                    className='bg-red-500 rounded px-3 py-1'
                     onClick={cancelHandler}
+                    className='rounded  bg-red-500  p-1'
                 >cancel</button>
+
                 <button
                     onClick={saveHandler}
-                    className='bg-green-500 rounded px-3 py-1 '
+                    className='rounded  bg-green-500  py-1 px-2'
                 >save</button>
             </div>
+
 
             <ToastContainer />
 
