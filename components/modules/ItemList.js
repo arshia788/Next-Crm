@@ -14,37 +14,16 @@ export default function ItemList({ form, setForm }) {
         console.log(products);
     }
 
-    // index ro baray in dadi ta befhami kodom dareh taghir miokneh
-
-    const changeHandler=(e, index)=>{
-        
-        // khob in value mishe on neveshteh ma va name ham mishe hammon input ke dadi 
-        const {name, value}= e.target;
-
-        // inja omadi hame ro gerefti 
-        const newProducts= [...products];
-
-        // inja omadi az koll products ha index ro gerefti va bad omadi name ro gerfti va value ham mishe on nevesht 
-
-        // ? in name dar asl hamoon nami hast ke be input ha dadi. 
-
-        newProducts[index][name]= value
-
-        setForm({...form, products:newProducts})
+    const changeHandler = (e, index) => {
+        const { name, value } = e.target;
+        const newProducts = [...products];
+        newProducts[index][name] = value
+        setForm({ ...form, products: newProducts })
     }
 
-    // dobareh omadi in index ha ro gerefti ke vase kodom hast in delete
-    const deleteHandler=(index)=>{
-
-        // ye clone tazeh sakhti
-        const newProducts= [...products];
-
-        // va inja ham ke omadi splice kardi va faght on object ro hazfeh kardi 
-        newProducts.splice(index, 1);
-
-        // va dobareh on update shodeh ro be products dadi 
-        setForm({...form, products:newProducts})
-
+    const deleteHandler = (index) => {
+        const newProducts = [...products];
+        setForm({ ...form, products: newProducts })
     }
 
 
@@ -56,38 +35,12 @@ export default function ItemList({ form, setForm }) {
             >purchased Products</h2>
 
             {
-                products.map((item, index) => {
-                    return (
-                        <div key={index} className='my-4 border border-gray-400 rounded p-2'>
-                            
-                        {/* havaset bashe ke in onChange baray in hast ke to FormInput eshkal nagireh  */}
-
-                            <FormInput name="name" label="Product Name" type="text"
-                            value={products.name} 
-                            onChange={e=> changeHandler(e, index)}
-                            />
-
-                            <div className='flex justify-between items-center my-8'>
-                                <FormInput name="price" label="Price" type="text"    
-                                value={products.price} 
-                                onChange={e=> changeHandler(e, index)}
-                                />
-
-                                <FormInput name="qty" 
-                                label="Qty" type="text" 
-                                onChange={e=> changeHandler(e, index)}
-                                value={products.qty} />
-                            </div>
-
-                            <button 
-                            onClick={()=>deleteHandler(index)}
-                            className='border text-red-500 p-1
-                            border-red-500 rounded w-full '
-                            >Remove</button>
-
-                        </div>
-                    )
-                })
+                // ? omadi inja va on compoenent pain ro seda zadi 
+                products.map((item, index) => <ProductItem key={index}
+                    product={item}
+                    changeHandler={(e) => changeHandler(e, index)}
+                    deleteHandler={() => deleteHandler(index)}
+                />)
             }
 
 
@@ -102,3 +55,34 @@ export default function ItemList({ form, setForm }) {
     )
 }
 
+
+function ProductItem({ product, changeHandler, deleteHandler }) {
+    return (
+        <div className='my-4 border border-gray-400 rounded p-2'>
+
+            <FormInput name="name" label="Product Name" type="text"
+                value={product.name}
+                onChange={changeHandler}
+            />
+
+            <div className='flex justify-between items-center my-8'>
+                <FormInput name="price" label="Price" type="text"
+                    value={product.price}
+                    onChange={changeHandler} />
+
+
+                <FormInput name="qty"
+                    label="Qty" type="text"
+                    onChange={changeHandler}
+                    value={product.qty} />
+            </div>
+
+            <button
+                onClick={() => deleteHandler(index)}
+                className='border text-red-500 p-1
+                            border-red-500 rounded w-full '
+            >Remove</button>
+
+        </div>
+    )
+}
