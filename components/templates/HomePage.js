@@ -3,7 +3,6 @@ import Card from '../modules/Card';
 
 export default function HomePage({ data }) {
 
-    console.log(data);
 
     return (
         <div>

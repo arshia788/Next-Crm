@@ -1,7 +1,9 @@
 import connectDB from "../../../utils/connectDB";
 import Customer from "../../../models/Customer";
 
-export async function handler(req, res){
+
+export default async function handler(req, res){
+    
     try{
         await connectDB()
     }catch(err){
@@ -10,11 +12,12 @@ export async function handler(req, res){
     }
 
     if(req.method === "PATCH"){
-        const {customerId} = req.qqery;
+        const {customerId} = req.query;
         const data= req.body.data
         
         try{
             const customer= await Customer.findOne({_id:customerId})
+            
             customer.name=data.name
             customer.lastName=data.lastName
             customer.email=data.email

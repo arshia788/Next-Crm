@@ -2,7 +2,9 @@ import connectDB from '../../../utils/connectDB'
 import Customer from '../../../models/Customer'
 
 
+// ! in vaseh details hast.
 export default async function handler(req, res){
+    
     try{
         await connectDB()
     }catch(err){
