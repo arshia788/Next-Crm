@@ -18,7 +18,6 @@ export default async function handler(req, res){
             res.status(400).json({status:'failed', message:"Invalid data!"})
                 return;
             }
-            
             try{
             const customer= await Customer.create(data)
 
@@ -30,5 +29,6 @@ export default async function handler(req, res){
         .json({status:"failed", message:"failed to send data to DB"})
         }
     }
+    
 
 }

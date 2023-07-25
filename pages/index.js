@@ -5,7 +5,7 @@ import HomePage from '../components/templates/HomePage';
 function index({ data }) {
   return (
     <div>
-      <h1 className=' mt-16 text-xl font-bold text-green-500'>Our-Customers</h1>
+      <h1 className='mb-8  mt-12 text-xl font-bold text-white'>Our-Customers</h1>
 
       <HomePage data={data}/>
     </div>
