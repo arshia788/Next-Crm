@@ -14,7 +14,6 @@ export async function handler(req, res){
         const data= req.body.data
         
         try{
-            // injori miay amal patch ro anjam midi 
             const customer= await Customer.findOne({_id:customerId})
             customer.name=data.name
             customer.lastName=data.lastName
@@ -26,7 +25,6 @@ export async function handler(req, res){
             customer.products=data.products
             customer.updatedAt=Date.now()
 
-            // in ham miad save mikoneh 
             customer.save()
             res.status(200).json({status:"success", data:customer})
 
