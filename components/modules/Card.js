@@ -35,7 +35,7 @@ export default function Card({ data }) {
                 href={`/edit/${data._id}`}
                 className='border rounded border-blue-500 text-blue-500 px-2 py-1'>edit</Link >
                 <Link 
-                href={`/edit/${data._id}`}
+                href={`/customer/${data._id}`}
                 className='border rounded border-orange-500 text-orange-500 px-2 py-1'>details</Link >
             </div>
         </div>
