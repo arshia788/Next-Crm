@@ -6,11 +6,11 @@ export default function FormInput({name, label, type, value, onChange}) {
         
         <label 
         html={name}
-        className='text-blue-200 mb-1'>{label}</label>
+        className='text-zinc-100 mb-1'>{label}</label>
 
         <input 
         id={name}
-        className='border-none outline-none rounded bg-blue-100 py-0.5'
+        className='border-none outline-none rounded bg-zinc-400 py-0.5'
         onChange={onChange}
         value={value}
         type={type}
